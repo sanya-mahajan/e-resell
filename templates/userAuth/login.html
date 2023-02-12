@@ -20,23 +20,20 @@
 
 <body class="text-center ms-5" style="width:500px">
     <center>
-    <form class="form-signin" method="POST" action="">
-        {%csrf_token%}
-      <img class="mb-4 " src="data:image/jpeg;base64,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" alt="" width="72" height="72">
-      <h2 class="h3 mb-3 font-weight-normal">Please sign in</h2>
-      <label for="inputName" class="sr-only">username</label>
-      <input type="" name="usrname"
-      id="inputName" class="form-control "  placeholder="username" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input name="pswd" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
+      {% load crispy_forms_tags %}
+
+      <!--Login--> 
+      <div class="container py-5">
+        <h1>Login</h1>
+        <form method="POST">
+          {% csrf_token %}
+          {{ login_form|crispy }}
+          <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+        <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit"style="width:100px">Sign in</button>
       
-    </form>
+   
     <b id="errorm">{{error_message}}</b>
 </center>
   </body>

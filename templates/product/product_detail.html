@@ -1,0 +1,20 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <body>
+{{product.name}} <br> 
+{% for img in images %}
+<li><img src="{{img.image.url}}" alt={{product.name}}></li>
+{% endfor %}
+<br> {{product.brand}}
+<br> {{product.created_at}}
+<br> {{product.price}}
+<br> {{product.description}}
+<br> {{product.condition}}
+<br>posted by:  {{product.owner}}
+</body>

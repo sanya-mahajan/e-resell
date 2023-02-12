@@ -1,22 +1,18 @@
 from django.contrib import admin
 from django.urls import path,include
-
-#first arrives at urls of main project file 
-#URL DISPATCHING
-
-#i the bawse
-admin.site.site_header="sanya admin"
-admin.site.site_title="title=testsite"
-admin.site.index_title="you go girl!"
-
-
+from django.conf import settings
+admin.site.site_title="Buy/Sell Admin Portal"
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     
     path('',include('userAuth.app_urls')),
-    path('',include('djApp.app_urls'))
+    path('',include('djApp.app_urls')),
+    path('products/',include('product.urls',namespace='product')),
 
 ]
+urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 

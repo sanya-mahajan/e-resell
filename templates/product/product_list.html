@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products List</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+<body>
+    categories:
+    {% for category in categories%}
+    <div><form method='get' action=""><input type="submit" name="category" value="{{category}}"><img src="{{category.logo.url}}" width='5%'></form></div>
+    {%endfor%}
+{% for product in productslist%}
+<div><a href="{% url 'product:productdetail' product.id %}">{{product}}</a></div>
+{%endfor%}
+</body>

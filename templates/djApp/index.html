@@ -1,21 +1,15 @@
 {%extends 'base.html'%}
 {%block title%}homepage{%endblock title%}
 
-{%block head%}HOMEPAGE ...<div style="font-family: fantasy; color: rgb(194, 36, 36);">{{feels}} {%endblock head%}
+{%block head%} Home {%endblock head%}
 
 {%block body%}
-<div style="font-family: fantasy; color: aqua;">{{uname}}</div>
+<div >{{uname}}</div>
 
-<br><p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><center>
 
-    <form method="POST" action="" >{% csrf_token %}
-        {{moodform}} 
-    </form>
-    </center>
 </p> <br><br>    
     
-    <center><div><img src="https://picsum.photos/500/300" alt="photu"><br>
-     </div></center>
+    
    
 
 {%endblock body%}
