@@ -1,8 +1,16 @@
 from django.shortcuts import render
 from .models import Product,Category,Brand,ProductImage
-# Create your views here.
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status,generics
+from product.serializers import ProductSerializer,CategorySerializer,BrandSerializer
+from rest_framework import filters
+
+@api_view(['GET','POST'])
+
 
 def product_list(request):
+   
     productslist=Product.objects.all()
     categories=Category.objects.all()
     context={
@@ -25,4 +33,19 @@ def product_detail(request,id):
     }
     return render(request,'product_detail.html',context)
 
+
+class product_list_api(generics.ListCreateAPIView):
     
+    search_fields = ['name']
+    filter_backends = (filters.SearchFilter,)
+    queryset=Product.objects.all()
+    serializer_class=ProductSerializer
+
+class categories_list_api(generics.ListCreateAPIView):
+    queryset=Category.objects.all()
+    serializer_class=CategorySerializer
+
+class brands_list_api(generics.ListCreateAPIView):
+    queryset=Brand.objects.all()
+    serializer_class=BrandSerializer        
+

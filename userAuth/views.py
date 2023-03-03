@@ -1,20 +1,19 @@
 
-from http.client import HTTP_PORT
-from urllib import response
 from django.shortcuts import render,HttpResponse,redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import  render, redirect
 from .forms import NewUserForm
 from django.contrib.auth import login
 from django.contrib import messages
-
+from rest_framework import generics, serializers
 from django.contrib.auth import authenticate,logout,login #in built user model
 from django.contrib.auth.models import User
-from djApp import views
-import djApp
-import userAuth
+from .serializers import UserSerializer
 from django.contrib.auth.forms import AuthenticationForm
-# Create your views here.
+
+class userslist(generics.ListCreateAPIView):
+	queryset=User.objects.all()
+	serializer_class=UserSerializer
+
 
 
 def loginusr(request):
@@ -52,3 +51,4 @@ def register(request):
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	form = NewUserForm()
 	return render (request=request, template_name="register.html", context={"register_form":form})    
+
