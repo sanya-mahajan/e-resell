@@ -12,7 +12,6 @@ def index(request):
 
 def chat_page(request, id):
     user_object = get_user_model().objects.get(id=id)
-    print (user_object)
     users = get_user_model().objects.exclude(id=request.user.id)
     thread_name = (
         f'chat_{request.user.id}_{user_object.id}'
