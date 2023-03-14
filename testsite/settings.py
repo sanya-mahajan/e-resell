@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,8 +30,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'userAuth',
-    'djApp',
+    'daphne',
     #'djApp.apps.djAppConfig',so that it doesnt use the default
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,10 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'rest_framework',
+    
     'django.contrib.staticfiles',
-    #'django.contrib.sites',
     'crispy_forms',
-    'product'
+    'product',
+    'chat',
+    'corsheaders',
+    
+    'userAuth',
+    'djApp',
+
     
 ]
 
@@ -67,7 +71,7 @@ STATICFILES_DIRS = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates/djApp',BASE_DIR/'templates/userAuth',BASE_DIR/'templates/product'],
+        'DIRS': [BASE_DIR/'templates/djApp',BASE_DIR/'templates/userAuth',BASE_DIR/'templates/product',BASE_DIR/'templates/chat'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,7 +85,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'testsite.wsgi.application'
-
+ASGI_APPLICATION = 'testsite.asgi.application'
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

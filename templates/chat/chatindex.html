@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Rooms</title>
+</head>
+<body>
+    <input id="room-name-submit" type="button" value="Start">
+
+    <script>
+       
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            window.location.pathname = '/chat/' + {{user.id}} + '/';
+        };
+    </script>
+</body>
+</html>

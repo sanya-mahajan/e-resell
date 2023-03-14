@@ -9,6 +9,7 @@ urlpatterns = [
     path('',include('userAuth.app_urls')),
     path('',include('djApp.app_urls')),
     path('products/',include('product.urls',namespace='product')),
+    path('', include('chat.urls', namespace='chat')),
 
 ]
 urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
